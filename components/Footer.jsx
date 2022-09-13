@@ -8,10 +8,6 @@ const Footer = () => {
       <a href="https://ntamiegbe.netlify.app/" rel="noreferrer" target="_blank">
         NTAMI EGBE
       </a>
-      <p className="icons">
-        <AiOutlineTwitter />
-        <AiOutlineWhatsApp />
-      </p>
     </div>
   );
 };
