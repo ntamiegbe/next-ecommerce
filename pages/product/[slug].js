@@ -21,7 +21,7 @@ const ProductDetails = ({ product, products }) => {
                     <div className='small-images-container'>
                         {image?.map((item, i) => (
                             // eslint-disable-next-line react/jsx-key
-                            <img src={urlFor(item)} className={i === index ? 'small-image selected-image' : 'small-image'} alt="small images" onMouseEnter={() => setIndex(i)} />
+                            <img key={i} src={urlFor(item)} className={i === index ? 'small-image selected-image' : 'small-image'} alt="small images" onMouseEnter={() => setIndex(i)} />
                         ))}
                     </div>
                 </div>

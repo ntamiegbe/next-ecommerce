@@ -6,7 +6,7 @@ import { Cart } from './';
 import { useStateContext } from '../context/StateContext';
 
 const Navbar = () => {
-  const { showCart, setShowCart, totalQuantities } = useStateContext();
+  const { ShowCart, setShowCart, totalQuantities } = useStateContext();
 
   return (
     <div className="navbar-container">
@@ -23,7 +23,7 @@ const Navbar = () => {
         <span className="cart-item-qty">{totalQuantities}</span>
       </button>
 
-      {showCart && <Cart />}
+      {ShowCart && <Cart />}
     </div>
   );
 };

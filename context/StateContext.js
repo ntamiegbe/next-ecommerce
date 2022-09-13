@@ -6,9 +6,12 @@ const Context = createContext()
 export const StateContext = ({ children }) => {
     const [ShowCart, setShowCart] = useState(false)
     const [CartItems, setCartItems] = useState([])
-    const [TotalPrice, setTotalPrice] = useState()
+    const [TotalPrice, setTotalPrice] = useState(0)
     const [totalQuantities, setTotalQuantities] = useState(0)
     const [qty, setQty] = useState(1)
+
+    let foundProduct
+    let index
 
     const onAdd = (product, quantity) => {
         const ifInCart = CartItems.find((item) => item._id === product._id)
@@ -34,6 +37,33 @@ export const StateContext = ({ children }) => {
         toast.success(`${qty} ${product.name} added to cart.`)
     }
 
+    const onRemove = (product) => {
+        foundProduct = CartItems.find((item) => item._id === product._id)
+        const newCartItems = CartItems.filter((item) => item._id !== product._id)
+
+        setTotalPrice((prevTotalPrice) => prevTotalPrice - foundProduct.price * foundProduct.quantity)
+        setTotalQuantities(prevTotalQuantities => prevTotalQuantities - foundProduct.quantity)
+        setCartItems(newCartItems)
+    }
+
+    const toggleCartItemQuantity = (id, value) => {
+        foundProduct = CartItems.find((item) => item._id === id)
+        index = CartItems.findIndex((product) => product._id === id)
+        const newCartItems = CartItems.filter((item) => item._id !== id)
+
+        if (value === 'inc') {
+            setCartItems([...newCartItems, { ...foundProduct, quantity: foundProduct.quantity + 1 }])
+            setTotalPrice((prevTotalPrice) => prevTotalPrice + foundProduct.price)
+            setTotalQuantities(prevTotalQuantities => prevTotalQuantities + 1)
+        } else if (value = 'dec') {
+            if (foundProduct.quantity > 1) {
+                setCartItems([...newCartItems, { ...foundProduct, quantity: foundProduct.quantity - 1 }])
+                setTotalPrice((prevTotalPrice) => prevTotalPrice - foundProduct.price)
+                setTotalQuantities(prevTotalQuantities => prevTotalQuantities - 1)
+            }
+        }
+    }
+
     const incQty = () => {
         setQty((prevQty) => prevQty + 1)
     }
@@ -55,9 +85,11 @@ export const StateContext = ({ children }) => {
                 totalQuantities,
                 qty,
                 incQty,
-                decQty, 
+                decQty,
                 onAdd,
-                setShowCart
+                setShowCart,
+                toggleCartItemQuantity,
+                onRemove
             }}
         >
             {children}
