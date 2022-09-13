@@ -5,7 +5,9 @@ const Footer = () => {
   return (
     <div className="footer-container">
       <p>2022 Snikas. All Rights Reserved</p>
-      <a href="https://ntamiegbe.netlify.app/" target="_blank">NTAMI EGBE</a>
+      <a href="https://ntamiegbe.netlify.app/" rel="noreferrer" target="_blank">
+        NTAMI EGBE
+      </a>
       <p className="icons">
         <AiOutlineTwitter />
         <AiOutlineWhatsApp />
