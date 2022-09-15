@@ -151,7 +151,7 @@ span.text-red {
   border-radius: 15px;
   padding: 10px 16px;
   background-color: #f02d34;
-  color: white;
+  color: #dcdcdc;
   border: none;
   margin-top: 40px;
   font-size: 18px;
@@ -175,7 +175,7 @@ span.text-red {
   margin-top: 4px;
 }
 .hero-banner-container h1 {
-  color: white;
+  color: #dcdcdc;
   font-size: 10em;
   margin-left: -20px;
   text-transform: uppercase;
