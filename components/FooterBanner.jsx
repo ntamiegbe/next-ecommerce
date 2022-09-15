@@ -27,7 +27,6 @@ const FooterBanner = ({
         <div className="right">
           <p>{smallText}</p>
           <h3>{midText}</h3>
-          <p>{desc}</p>
           <Link href="">
             <button type="button">{buttonText}</button>
           </Link>
